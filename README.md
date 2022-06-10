@@ -1,1 +1,1 @@
-# python-django-quickstart
+# python-ms-quickstart
