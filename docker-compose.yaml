@@ -1,0 +1,16 @@
+version: '3.8'
+services: 
+    api-service:
+        build: .
+        command: flask run --host=0.0.0.0 --port=8000
+        volumes: 
+            - ./:/app/
+        ports: 
+            - 8000:8000
+        environment: 
+            PORT: 8000
+            FLASK_DEBUG: 1
+            ENVIRONMENT: dev
+            POSTGRES_DB: postgres
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: postgres       
