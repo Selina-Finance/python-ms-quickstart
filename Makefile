@@ -10,17 +10,3 @@ test:
 	@echo "Test"
 
 
-local_dev:
-	@docker build -t aws-migration-app .
-
-local_run:
-	@docker run -p 8000:8000 -it aws-migration-app 
-
-
-.PHONY: write_vault
-write_vault: ## This will write to Vault
-	@vault kv put secret/aws-migration-app/staging POSTGRES_DB="POSTGRES_DB-vault" POSTGRES_USER="POSTGRES_USER-vault" ENVIRONMENT="ENVIRONMENT-vault"
-
-.PHONY: read_vault
-read_vault: ## This will write to Vault
-	@vault kv get -format=json secret/aws-migration-app/staging |jq .data.data 
